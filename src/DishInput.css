@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.dish-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.add-dish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 500px;
+}

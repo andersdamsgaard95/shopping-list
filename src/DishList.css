@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+li {
+    width: 100%;
+    max-width: 500px;
+}
+
+.saved-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.editing-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.saved-dish-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dish-heading {
+    font-size: 1.5em;
+}
