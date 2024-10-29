@@ -52,6 +52,7 @@ export default function DishList({ taskList, setTaskList }) {
     //  RETURN STATEMENT
     return (
         <ul>
+            <h2>Todays meals</h2>
             {
                 taskList.map((recipeItem, index) => (
 
@@ -90,8 +91,8 @@ export default function DishList({ taskList, setTaskList }) {
                                     <p>Link to recipe:<br/>{recipeItem.recipeLink}</p>
                                 </div>
                                 <div>
-                                    <button onClick={() => deleteDish(index)}>Delete dish</button>
                                     <button onClick={() => editDish(index)}>Edit</button>
+                                    <button onClick={() => deleteDish(index)}>Delete dish</button>
                                 </div>
                             </div>)}
 

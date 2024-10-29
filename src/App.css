@@ -4,6 +4,7 @@
 }
 
 .app-layout {
+  padding: 100px;
   width: 100%;
   display: flex;
   flex-direction: column;

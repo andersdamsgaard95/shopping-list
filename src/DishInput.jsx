@@ -35,8 +35,12 @@ export default function DishInput({ setTaskList }) {
 
     return (
         <div className='dish-input-container'>
+
             <h1>Tilføj ny opskrift</h1>
+            
+            {/* ADD MEAL FORM */}
             <form className='add-dish-form' onSubmit={handleSubmit}>
+                <h3>What do you wanna eat?</h3>
                 <input
                     name='dish'
                     value={dish}
@@ -59,8 +63,9 @@ export default function DishInput({ setTaskList }) {
                     placeholder='Add a link to your favorite recipe'
                     onChange={handleChange}
                 />
-                <button type='submit'>Add recipe</button>
+                <button type='submit'>Choose meal</button>
             </form>
+
         </div>
     )
 }
