@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#app-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+        #days {
+            display: flex;
+            gap: 25px;
+        }
+}

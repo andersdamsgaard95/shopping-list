@@ -1,17 +1,22 @@
 import { useState } from 'react';
 
-export default function TaskAdder({ kindOfTask, timeInputName, placeholder, setCalender }) {
+export default function TaskAdder({ kindOfTask, placeholder, setCalender }) {
 
-    const [time, setTime] = useState(0);
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
     const [calenderNote, setCalenderNote] = useState('');
 
     function handleChange(event) {
         switch (event.target.name) {
-            case timeInputName:
-                setTime(event.target.value);
+            case 'startTime':
+                setStartTime(event.target.value);
+                break;
+            case 'endTime':
+                setEndTime(event.target.value);
                 break;
             case 'calenderNote':
                 setCalenderNote(event.target.value);
+                break;
         }
     }
 
@@ -20,10 +25,11 @@ export default function TaskAdder({ kindOfTask, timeInputName, placeholder, setC
 
         setCalender((prev) => [
             ...prev,
-            {time, kindOfTask, calenderNote}
+            {startTime, endTime, kindOfTask, calenderNote}
         ])
 
-        setTime(0);
+        setStartTime('');
+        setEndTime('');
         setCalenderNote('');
     }
     
@@ -33,8 +39,15 @@ export default function TaskAdder({ kindOfTask, timeInputName, placeholder, setC
             <form onSubmit={handleSubmit}>
                 <input 
                     type="time"
-                    value={time}
-                    name={timeInputName}
+                    value={startTime}
+                    name='startTime'
+                    onChange={handleChange}
+                    required
+                />
+                <input 
+                    type="time"
+                    value={endTime}
+                    name='endTime'
                     onChange={handleChange}
                 />
                 <input
@@ -43,6 +56,7 @@ export default function TaskAdder({ kindOfTask, timeInputName, placeholder, setC
                     value={calenderNote}
                     placeholder={placeholder}
                     onChange={handleChange}
+                    required
                 />
                 <button type='submit'>Add to calender</button>
             </form>

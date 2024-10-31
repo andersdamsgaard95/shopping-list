@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#day-layout {
+  border: 1px solid black;
+  padding: 25px;
+  width: 500px;
+}/*# sourceMappingURL=Day.css.map */

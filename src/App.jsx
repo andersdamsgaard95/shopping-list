@@ -1,44 +1,123 @@
 import { useState } from 'react';
 import './App.css';
-import DishInput from './DishInput';
+import Day from './Day';
 import DishList from './DishList';
-import TaskAdder from './taskAdder';
-import Calender from './Calender';
 
 function App() {
+  
+  const [savedMeals, setSavedMeals] = useState([]);
 
-  const [taskList, setTaskList] = useState([]);
-  const [calender, setCalender] = useState([]);
+  const [mondayMeals, setMondayMeals] = useState([]);
+  const [tuesdayMeals, setTuesdayMeals] = useState([]);
+  const [wednesdayMeals, setWednesdayMeals] = useState([]);
+  const [thursdayMeals, setThursdayMeals] = useState([]);
+  const [fridayMeals, setFridayMeals] = useState([]);
+  const [saturdayMeals, setSaturdayMeals] = useState([]);
+  const [sundayMeals, setSundayMeals] = useState([]);
 
+  function addSavedMealToADay(mealIndex, day) {
+    switch (day) {
+      case 'Monday':
+        setMondayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ]);
+        break;
+      case 'Tuesday':
+        setTuesdayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ]);
+        break;
+      case 'Wednesday':
+        setWednesdayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ])
+        break;
+      case 'Thursday':
+        setThursdayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ])
+        break;
+      case 'Friday':
+        setFridayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ])
+        break;
+      case 'Saturday':
+        setSaturdayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ])
+        break;
+      case 'Sunday':
+        setSundayMeals((prev) => [
+        ...prev,
+        savedMeals[mealIndex]
+        ])
+        break;
+    }
+  }
+  
   return (
-    <div className='app-layout'>
-      <DishInput setTaskList={setTaskList} />
-
-      <TaskAdder 
-        kindOfTask={'do shopping'}
-        timeInputName={'shopping'}
-        placeholder='where? eg Netto...' 
-        setCalender={setCalender} 
+    <section id='app-layout'>
+      <div id='days'>
+        <Day 
+          dayOfTheWeek={'Monday'} 
+          setSavedMeals={setSavedMeals} 
+          taskList={mondayMeals} 
+          setTaskList={setMondayMeals} 
+        />
+        <Day 
+          dayOfTheWeek={'Tuesday'} 
+          setSavedMeals={setSavedMeals} 
+          taskList={tuesdayMeals} 
+          setTaskList={setTuesdayMeals} 
+        />
+        <Day 
+          dayOfTheWeek={'Wednesday'} 
+          setSavedMeals={setSavedMeals} 
+          taskList={wednesdayMeals} 
+          setTaskList={setWednesdayMeals} 
+        />
+        <Day 
+          dayOfTheWeek={'Thursday'} 
+          setSavedMeals={setSavedMeals} 
+          taskList={thursdayMeals} 
+          setTaskList={setThursdayMeals} 
+        />
+        <Day 
+          dayOfTheWeek={'Friday'} 
+          setSavedMeals={setSavedMeals} 
+          taskList={fridayMeals} 
+          setTaskList={setFridayMeals} 
+        />
+        <Day 
+          dayOfTheWeek={'Saturday'} 
+          setSavedMeals={setSavedMeals} 
+          taskList={saturdayMeals} 
+          setTaskList={setSaturdayMeals} 
+        />
+        <Day 
+          dayOfTheWeek={'Sunday'}
+          setSavedMeals={setSavedMeals} 
+          taskList={sundayMeals} 
+          setTaskList={setSundayMeals} 
+        />
+      </div>
+      
+      <DishList 
+        listHeading='Saved meals' 
+        mealList={savedMeals} 
+        setMealList={setSavedMeals} 
+        exportMeal={addSavedMealToADay} 
+        possibleToPrioritize={true} 
       />
-
-      <TaskAdder 
-        kindOfTask={'cook'} 
-        timeInputName={'cooking'} 
-        placeholder='what? eg lunch or dinner...' 
-        setCalender={setCalender} 
-      />
-
-      <TaskAdder 
-        kindOfTask={'eat'} 
-        timeInputName={'eating'} 
-        placeholder='what? eg lunch or dinner...' 
-        setCalender={setCalender} 
-      />
-
-      <DishList taskList={taskList} setTaskList={setTaskList} />
-      <Calender calender={calender} />
-    </div>
-  );
+    </section>
+  )
 }
 
 export default App;

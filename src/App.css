@@ -3,10 +3,12 @@
   box-sizing: border-box;
 }
 
-.app-layout {
-  padding: 100px;
-  width: 100%;
+#app-layout {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 50px;
 }
+#app-layout #days {
+  display: flex;
+  gap: 25px;
+}/*# sourceMappingURL=App.css.map */

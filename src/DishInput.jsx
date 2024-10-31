@@ -35,8 +35,6 @@ export default function DishInput({ setTaskList }) {
 
     return (
         <div className='dish-input-container'>
-
-            <h1>Tilføj ny opskrift</h1>
             
             {/* ADD MEAL FORM */}
             <form className='add-dish-form' onSubmit={handleSubmit}>
