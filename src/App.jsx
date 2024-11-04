@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Day from './Day';
 import DishList from './DishList';
@@ -14,6 +14,48 @@ function App() {
   const [fridayMeals, setFridayMeals] = useState([]);
   const [saturdayMeals, setSaturdayMeals] = useState([]);
   const [sundayMeals, setSundayMeals] = useState([]);
+
+  //  LOAD LISTS FROM LOCAL STORAGE ON FIRST MOUNT
+  useEffect(() => {
+    const loadFromLocalStorage = (key, setState) => {
+      const savedData = localStorage.getItem(key);
+      if (savedData) setState(JSON.parse(savedData));
+    };
+
+    loadFromLocalStorage('savedMeals', setSavedMeals);
+    loadFromLocalStorage('mondayMeals', setMondayMeals);
+    loadFromLocalStorage('tuesdayMeals', setTuesdayMeals);
+    loadFromLocalStorage('wednesdayMeals', setWednesdayMeals);
+    loadFromLocalStorage('thursdayMeals', setThursdayMeals);
+    loadFromLocalStorage('fridayMeals', setFridayMeals);
+    loadFromLocalStorage('saturdayMeals', setSaturdayMeals);
+    loadFromLocalStorage('sundayMeals', setSundayMeals);
+  }, []);
+  
+  //  SAVE LISTS TO LOCAL STORAGE
+  useEffect(() => {
+    const saveToLocalStorage = (key, data) => {
+      localStorage.setItem(key, JSON.stringify(data));
+    };
+
+    saveToLocalStorage('savedMeals', savedMeals);
+    saveToLocalStorage('mondayMeals', mondayMeals);
+    saveToLocalStorage('tuesdayMeals', tuesdayMeals);
+    saveToLocalStorage('wednesdayMeals', wednesdayMeals);
+    saveToLocalStorage('thursdayMeals', thursdayMeals);
+    saveToLocalStorage('fridayMeals', fridayMeals);
+    saveToLocalStorage('saturdayMeals', saturdayMeals);
+    saveToLocalStorage('sundayMeals', sundayMeals);
+  }, [
+    savedMeals,
+    mondayMeals,
+    tuesdayMeals,
+    wednesdayMeals,
+    thursdayMeals,
+    fridayMeals,
+    saturdayMeals,
+    sundayMeals
+  ]);
 
   function addSavedMealToADay(mealIndex, day) {
     switch (day) {

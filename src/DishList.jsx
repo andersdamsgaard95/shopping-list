@@ -10,7 +10,7 @@ export default function DishList({ listHeading, mealList, setMealList, exportMea
     const [editedDish, setEditedDish] = useState('');
     const [editedRecipe, setEditedRecipe] = useState('');
     const [editedRecipeLink, setEditedRecipeLink] = useState('');
-    const [whichDayToAddSavedMealTo, setWhichDayToAddSavedMealTo] = useState('Monday');
+    const [whichDayToAddSavedMealTo, setWhichDayToAddSavedMealTo] = useState('');
     
     //  EVENT HANDLERS
     function deleteDish(taskIndex) {
@@ -59,12 +59,26 @@ export default function DishList({ listHeading, mealList, setMealList, exportMea
     function handleDayChoice(event) {
         setWhichDayToAddSavedMealTo(event.target.value);
     }
+    function sortByHealth() {
+        const sortedByHealth = [...mealList].sort((a, b) => b.healthPriority - a.healthPriority);
+        setMealList(sortedByHealth);
+    }
+    function sortByPrice() {
+        const sortedByPrice = [...mealList].sort((a, b) => a.pricePriority - b.pricePriority);
+        setMealList(sortedByPrice);
+    }
 
 
     //  RETURN STATEMENT
     return (
         <ul>
             <h2>{listHeading}</h2>
+            {possibleToPrioritize && mealList.length > 0 && (
+                <div>
+                    <button onClick={sortByHealth}>Sort by most healthy</button>
+                    <button onClick={sortByPrice}>Sort by cheapest</button>
+                </div>
+            )}
             {
                 mealList.map((recipeItem, index) => (
 
@@ -141,7 +155,8 @@ export default function DishList({ listHeading, mealList, setMealList, exportMea
                                             name="chooseDay" 
                                             id="chooseDay"
                                             value={whichDayToAddSavedMealTo}
-                                            onChange={handleDayChoice}>                                 
+                                            onChange={handleDayChoice}>
+                                                <option value="" disabled hidden>Select a day</option>                                 
                                                 <option value='Monday'>Monday</option>
                                                 <option value='Tuesday'>Tuesday</option>
                                                 <option value='Wednesday'>Wednesday</option>

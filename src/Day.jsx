@@ -8,7 +8,6 @@ import Calender from './Calender';
 export default function Day({ dayOfTheWeek, setSavedMeals, taskList, setTaskList }) {
 
   const [calender, setCalender] = useState([]);
-  //const [taskList, setTaskList] = useState([]);
 
   function saveMeal(mealIndex) {
     setSavedMeals((prev) => [
@@ -43,7 +42,7 @@ export default function Day({ dayOfTheWeek, setSavedMeals, taskList, setTaskList
 
       <DishList listHeading='Todays meals' mealList={taskList} setMealList={setTaskList} exportMeal={saveMeal} />
     
-      <Calender calender={calender} />
+      <Calender calender={calender} setCalender={setCalender} />
 
     </div>
   );
